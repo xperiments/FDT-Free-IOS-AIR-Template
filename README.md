@@ -2,11 +2,24 @@ FDT-Free-IOS-AIR-Template
 ===========================================
 A group of ant files that helps users of FDT5 Free Deploy IOS apps.
 
-Basic Instalation process & info provided. Must Include a good tutotial ;-)
+Basic Instalation process & info provided. Must Include a good tutorial ;-)
+
+
+Features
+----------------
+- Provides deploying to all avaliable targets
+- Deploy your ipa via USB to real device & iPhone Simulator
+- Configure -platformsdk for Apple SDK's & iPhone Simulator deploying
+- Autoincrement build number in Air Descriptor xml
+- Enables an easy way to include custom Infoadditions
+- Debug in Device & Simulator ( sort of, but it may help )
+- Configure app icons
+- Configure languages
 
 Requeriments
 ----------------
-OSX only 4 now
+OSX
+
 Tested with latest version of FDT 5.6.2
 
 Instalation
