@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Install Template" basedir="." default="install">
+
+	<target name="install">
+		<unzip src="airfdtfree.zip" dest="/Users/${user.name}/Library/Application Support/FDT/projectTemplates/AIR FDT FREE"/>
+		<copy file="air_module.xml" tofile="/Users/${user.name}/Library/Application Support/FDT/projectTypes/air_module.xml"/>
+	</target>	
+</project>

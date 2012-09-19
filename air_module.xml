@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:projectType xmlns:tns="http://fdt.powerflasher.com/ProjectType"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://fdt.powerflasher.com/ProjectType projectType.xsd ">
+	<name>AIR Module</name>
+	<version>2.5</version>	
+	<description>AIR FDT Free Module lets you compile the SWF part of an AIR FDT Project without actually deploying it.</description>
+	<compatibleSdks>
+		<sdk min="4.5" max="4.9"/>
+	</compatibleSdks>
+	<swcs>
+		<swc>
+			<path>frameworks/libs/air/airglobal.swc</path>
+		</swc>
+		<swc>
+			<path>frameworks/libs/core.swc</path>
+		</swc>
+		<swc>
+			<path>frameworks/libs/osmf.swc</path>
+		</swc>
+		<swc>
+			<path>frameworks/libs/textLayout.swc</path>
+		</swc>
+		<swc>
+			<path>frameworks/libs/air/servicemonitor.swc</path>
+		</swc>
+	</swcs>
+	<runtime>Flash Player</runtime>
+	<compatiblePlayers>
+		<player default="true">External SWF Viewer</player>
+		<player default="false">Browser</player>
+		<player default="false">Standalone Flash Player</player>
+	</compatiblePlayers>
+	<compilerArguments passClasspath="true" passMainclass="true" passSwcs="true" passRsls="false">
+		<argument>-load-config="{flexSDK}/frameworks/air-config.xml"</argument>
+		<argument>-static-link-runtime-shared-libraries=true</argument>
+		<argument>-target-player={playerVersion}</argument>
+		<argument>-library-path+="{flexSDK}/frameworks/locale/en_US"</argument>
+		<argument>-default-size=550,400</argument>
+		
+	</compilerArguments>
+</tns:projectType>
+
