@@ -2,6 +2,7 @@
 <project name="Install Template" basedir="." default="install">
 
 	<target name="install">
+		<delete dir="/Users/${user.name}/Library/Application Support/FDT/projectTemplates/AIR FDT FREE"/>
 		<unzip src="airfdtfree.zip" dest="/Users/${user.name}/Library/Application Support/FDT/projectTemplates/AIR FDT FREE"/>
 		<copy file="air_module.xml" tofile="/Users/${user.name}/Library/Application Support/FDT/projectTypes/air_module.xml"/>
 	</target>	

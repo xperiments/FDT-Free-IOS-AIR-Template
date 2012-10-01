@@ -37,6 +37,8 @@ Instalation
 Running
 ----------------         
 
+> Drop FDT.publish.settings.xml from build dir to the ant view.
+
 > Drop build.xml and degugUtils.xml to the ant view.
 
 > First-run build.xml by double clicking it. ( Nothings happends is NORMAL )
