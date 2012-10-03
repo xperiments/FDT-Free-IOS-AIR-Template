@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:projectTemplate xmlns:tns="http://fdt.powerflasher.com/ProjectTemplate"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://fdt.powerflasher.com/ProjectTemplate ../../projectTemplate.xsd">
+	<name>IOS FDT Free</name>
+	<version>2.5</version>
+	<description>Deploy an FDT Free IOS AIR Project targeting all avaliable targets.</description>
+	<projectType>AIR Module</projectType>
+	<variables>
+		<primaryGroup label="">	
+			<group label="Application Setup">
+				<variable name="appId" label="Default Package:" default="com.powerflasher.SampleApp"
+					type="string" />						
+			</group>
+			<group label="Project Setup">
+				<variable name="selectedSDK" label="Default SDK" default="_highest" type="sdk(3.6,4.9,1.5,4)" />						
+				<variable name="includeMonsterDebugger" label="Add Monster Debugger SWC" default="false" type="boolean" />				
+			</group>
+		</primaryGroup>				
+	</variables>
+	<expressions>
+		<expression name="missingSDKWarning">This template requires the Flex 3.6 SDK or later.</expression>
+		<expression name="hasMinimumSDK" value="sdkVersionExists('3.6','4.9')"/>
+		<expression name="templateError" value="if(!${hasMinimumSDK},${missingSDKWarning},'')"/>				
+		<expression name="projectType" value="if(${useFlex},'Web Flex','Web')" />
+		<expression name="targetPlatform" value="'Web'" />
+		<expression name="preferredSdk" value="${selectedSDK}"/>		
+		<expression name="postFileName" value="replaceRegex(${projectName}, '([^\w]+)', '')" />
+		<expression name="fileName" value="replaceRegex(${postFileName}, '(^\d+)', '')" />
+		<expression name="packageStructure" value="replaceRegex(${appId}, '([.]+)', '/')" />		
+		<expression name='isFlex3' value="sdkHasLib(${selectedSDK},'frameworks/libs/framework.swc') &amp;&amp; ${useFlex}"/>		
+		<expression name='isFlex4' value="sdkHasLib(${selectedSDK},'frameworks/libs/mx/mx.swc')  &amp;&amp; ${useFlex}"/>		
+		<expression name="sourceFolder" value="src" />		
+		<expression name="outputFolder" value="bin" />				
+		<expression name="autoLibFolder" value="lib" />
+		<expression name="buildFolder" value="build" />
+		<expression name="fdtFreeSDK" value="${selectedSDK}" />			
+	</expressions>
+	<folders>
+		<sourceFolder>${sourceFolder}</sourceFolder>
+		<outputFolder>${outputFolder}</outputFolder>
+		<autoLibFolder>${autoLibFolder}</autoLibFolder>
+	</folders>
+
+	<contentCreation processFileExtensions="mxml,xml,launch,properties,as,html,tpl">
+
+		<!-- ant build files -->
+		<folder src="build" dest="build" process="false" />
+
+		<file src="properties/properties.tpl" dest="${buildFolder}/properties/es.xperiments.fdt.compile.gui.properties" process="true"/>
+		<!-- If AS -->
+		<file src="as/start.as" dest="${sourceFolder}/${packageStructure}/${projectName}Main.as" if="!${useFlex}"/>
+
+		<file src="libs/MonsterDebuggerMobile.swc" dest="${autoLibFolder}/MonsterDebuggerMobile.swc" if="${includeMonsterDebugger}"/>
+	</contentCreation>
+</tns:projectTemplate>
+

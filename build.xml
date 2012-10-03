@@ -3,7 +3,11 @@
 
 	<target name="install">
 		<delete dir="/Users/${user.name}/Library/Application Support/FDT/projectTemplates/AIR FDT FREE"/>
-		<unzip src="airfdtfree.zip" dest="/Users/${user.name}/Library/Application Support/FDT/projectTemplates/AIR FDT FREE"/>
+		<!-- <unzip src="airfdtfree.zip" dest="/Users/${user.name}/Library/Application Support/FDT/projectTemplates/AIR FDT FREE"/> -->
+		<copy todir="/Users/${user.name}/Library/Application Support/FDT/projectTemplates/AIR FDT FREE">
+			<fileset dir="airfdtfree"/>
+		</copy>
+
 		<copy file="air_module.xml" tofile="/Users/${user.name}/Library/Application Support/FDT/projectTypes/air_module.xml"/>
 	</target>	
 </project>
